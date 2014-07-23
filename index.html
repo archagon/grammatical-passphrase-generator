@@ -64,15 +64,15 @@
                 var randomAdjectives = getRandomElements(adjectives, 2);
                 var randomArticles = getRandomElements(articles, 2);
 
-                var output = 
-                "<p>" + 
-                "<span class='article'>" + toTitleCase(randomArticles[0]) + "</span>" + " " + 
-                "<span class='adjective'>" + randomAdjectives[0] + "</span>" + " " + 
-                "<span class='noun'>" + randomNouns[0] + "</span>" + " " + 
-                "<span class='verb'>" + randomVerb[0] + "</span>" + " " + 
-                "<span class='article'>" + randomArticles[1] + "</span>" + " " + 
-                "<span class='adjective'>" + randomAdjectives[1] + "</span>" + " " + 
-                "<span class='noun'>" + randomNouns[1] + "</span>" + "." + 
+                var output =
+                "<p>" +
+                "<span class='article'>" + toTitleCase(randomArticles[0]) + "</span>" + " " +
+                "<span class='adjective'>" + randomAdjectives[0] + "</span>" + " " +
+                "<span class='noun'>" + randomNouns[0] + "</span>" + " " +
+                "<span class='verb'>" + randomVerb[0] + "</span>" + " " +
+                "<span class='article'>" + randomArticles[1] + "</span>" + " " +
+                "<span class='adjective'>" + randomAdjectives[1] + "</span>" + " " +
+                "<span class='noun'>" + randomNouns[1] + "</span>" + "." +
                 "</p>";
 
                 generateHelperText(2, 2, 1, 2);
@@ -81,33 +81,33 @@
             }
 
             function generateHelperText(cArticles, cNouns, cVerbs, cAdjectives) {
-                var nounEntropy = Math.floor(Math.log2(articles.length));
-                var verbEntropy = Math.floor(Math.log2(nouns.length));
-                var articleEntropy = Math.floor(Math.log2(verbs.length));
-                var adjectiveEntropy = Math.floor(Math.log2(adjectives.length));
+                var nounEntropy = Math.floor(log2(articles.length));
+                var verbEntropy = Math.floor(log2(nouns.length));
+                var articleEntropy = Math.floor(log2(verbs.length));
+                var adjectiveEntropy = Math.floor(log2(adjectives.length));
 
-                var output = 
-                "<p>" + 
-                "The above password has " + 
-                cArticles + 
-                " <span class='article'>articles</span> at " + 
-                articleEntropy + 
-                " bits each, " + 
-                cNouns + 
-                " <span class='noun'>nouns</span> at " + 
-                nounEntropy + 
-                " bits each, " + 
-                cAdjectives + 
-                " <span class='adjective'>adjectives</span> at " 
-                + adjectiveEntropy + 
-                " bits each, and " + 
-                cVerbs + 
-                " <span class='verb'>verbs</span> at " 
-                + verbEntropy + 
-                " bits each. This results in " + 
-                (nounEntropy * cNouns + verbEntropy * cVerbs + articleEntropy * cArticles + adjectiveEntropy * cAdjectives) + 
-                " total bits of entropy." + 
-                " All words come from the Moby Part-of-Speech wordlist, and are randomly selected based on reading level." + 
+                var output =
+                "<p>" +
+                "The above password has " +
+                cArticles +
+                " <span class='article'>articles</span> at " +
+                articleEntropy +
+                " bits each, " +
+                cNouns +
+                " <span class='noun'>nouns</span> at " +
+                nounEntropy +
+                " bits each, " +
+                cAdjectives +
+                " <span class='adjective'>adjectives</span> at "
+                + adjectiveEntropy +
+                " bits each, and " +
+                cVerbs +
+                " <span class='verb'>verbs</span> at "
+                + verbEntropy +
+                " bits each. This results in " +
+                (nounEntropy * cNouns + verbEntropy * cVerbs + articleEntropy * cArticles + adjectiveEntropy * cAdjectives) +
+                " total bits of entropy." +
+                " All words come from the Moby Part-of-Speech wordlist, and are randomly selected based on reading level." +
                 "</p>";
 
                 $("#description").html(output);
@@ -115,6 +115,10 @@
 
             function toTitleCase(str) {
                 return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            }
+
+            function log2(n) {
+                return Math.log(n)/Math.LN2;
             }
 
             function getRandomElements(array, numElements) {
