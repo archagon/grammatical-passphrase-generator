@@ -5,5 +5,7 @@ Diceware is a good method for generating memorable passphrases, but it's a lot h
 Bulletin:
 
 * The entropy count is possibly wrong at the moment, as it does not take grammar into account. Will have to double-check.
-* The words are currently too esoteric. They will be simplified using a second wordlist that only contains well-known words.
+* The words are currently too esoteric. The wordlist will be limited to more commonly-used words.
 * The sentences currently all have the same structure. The structure will eventually be randomized.
+
+You can try out the page at <http://archagon.github.io/grammatical-passphrase-generator>.
